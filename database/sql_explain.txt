@@ -1,0 +1,2 @@
+food_database_all.sql文件中包含所有的数据库结构和测试数据
+food_database_structure.sql文件中仅有数据库结果

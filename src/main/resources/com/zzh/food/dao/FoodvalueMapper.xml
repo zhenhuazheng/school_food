@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zzh.food.dao.FoodvalueMapper">
+
+    <!-- 查找该规格组下的规格数量 -->
+    <select id="findCountByFoodattrId" resultType="java.lang.Integer">
+        select count(0) from food_foodvalue where foodattrId=#{foodattrId}
+    </select>
+
+    <!-- 新增菜品的规格值 -->
+    <insert id="addFoodvalue">
+        insert into food_foodvalue(foodId, foodattrId, foodvalueName)
+        values(#{foodId}, #{foodattrId}, #{foodvalueName})
+    </insert>
+
+    <!-- 删除某个菜品的所有规格值 -->
+    <delete id="deleteFoodvalueByFoodId">
+        delete from food_foodvalue where foodId=#{foodId}
+    </delete>
+    
+    <!-- 根据菜品SPU编号查找规格组编号 -->
+    <select id="findFoodattrIdByFoodId" resultType="java.lang.Long">
+        select foodattrId from food_foodvalue where foodId=#{foodId} limit 1 ;
+    </select>
+
+    <!-- 删除某个菜品下的某一个规格 -->
+    <delete id="deleteFoodvalue">
+        delete from food_foodvalue where foodId=#{foodId} and foodvalueName=#{foodvalueName}
+    </delete>
+
+    <!-- 根据菜品编号返回菜品规格信息 -->
+    <select id="findFoodvalueListByFoodId" resultType="com.zzh.food.entity.FoodvalueEntity">
+        select * from food_view_attr_value where foodId=#{foodId};
+    </select>
+</mapper>

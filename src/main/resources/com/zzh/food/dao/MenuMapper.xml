@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zzh.food.dao.MenuMapper">
+
+    <!-- 查询所有菜单列表 -->
+    <select id="findMenuList" resultType="com.zzh.food.entity.MenuEntity">
+        select * from food_menu
+    </select>
+
+    <!-- 根据用户Id查询其菜单列表 -->
+    <select id="findMenuListByUserId" resultType="com.zzh.food.entity.MenuEntity">
+        select distinct m.* from food_menu m
+        inner join food_role_menu rm on rm.menuId=m.id
+        inner join food_user_role ur on ur.roleId=rm.roleId
+        where ur.userId=#{userId}
+    </select>
+
+    <!-- 根绝页面条件查询菜单列表 -->
+    <select id="findMenuListByPage" resultType="com.zzh.food.entity.MenuEntity" parameterType="com.zzh.food.vo.MenuVo">
+        select * from food_menu
+        <where>
+            <if test="id!=null"> and id=#{id} or pid=#{id} </if>
+            <if test="title!=null and title!=''"> and title like concat('%', #{title}, '%') </if>
+        </where>
+        order by id
+    </select>
+
+    <!-- 新增菜单 -->
+    <insert id="addMenu">
+        insert into food_menu (<if test="pid!=null"> pid,</if> title, href, spread, icon)
+        values (<if test="pid!=null"> #{pid},</if> #{title}, #{href}, #{spread}, #{icon})
+    </insert>
+
+    <!-- 修改菜单 -->
+    <update id="modifyMenu">
+        update food_menu
+        <set>
+            <if test="pid!=null"> pid=#{pid}, </if>
+            <if test="pid==null"> pid=0, </if>
+            <if test="title!=null and title!=''"> title=#{title}, </if>
+            <if test="href!=null and href!=''"> href=#{href}, </if>
+            <if test="spread!=null"> spread=#{spread}, </if>
+            icon=#{icon},
+        </set>
+        where id=#{id}
+    </update>
+
+    <!-- 查询该角色拥有的菜单列表 -->
+    <select id="findMenuIdListByRoleId" resultType="com.zzh.food.entity.MenuEntity">
+        select m.* from food_menu m
+        inner join food_role_menu rm on m.id=rm.menuId
+        where roleId=#{roleId}
+    </select>
+
+    <!-- 查询该菜单有多少用户在用 -->
+    <select id="countRoleByMenuId" resultType="java.lang.Integer">
+        select count(0) from food_role_menu where menuId=#{menuId}
+    </select>
+
+    <!-- 删除菜单 -->
+    <delete id="deleteMenu">
+        delete from food_menu where id=#{menuId}
+    </delete>
+</mapper>
