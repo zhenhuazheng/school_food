@@ -8,6 +8,7 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="school_food" />
+          <element id="module-output" name="schoolFood" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework:spring-aspects:5.2.8.RELEASE" />
@@ -40,7 +41,7 @@
           <element id="library" level="project" name="Maven: com.github.jsqlparser:jsqlparser:3.2" />
         </element>
       </element>
-      <element id="javaee-facet-resources" facet="school_food/web/Web" />
+      <element id="javaee-facet-resources" facet="schoolFood/web/Web" />
     </root>
   </artifact>
 </component>

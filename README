@@ -1,0 +1,8 @@
+1.git
+：https://blog.csdn.net/qq_40770527/article/details/124129505
+2.部署SSM项目
+    （1）新建artifacts
+        file->project..->artifacts->new web application->empty->new manifest file->右边 put into out root
+    （2）edit configuration -> new tomcat server ->vm option (-Dfile.encoding=UTF-8) ->deployment 选择第一步新建的artifacts
+    （3）启动tomcat
+
