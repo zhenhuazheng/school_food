@@ -5,4 +5,8 @@
         file->project..->artifacts->new web application->empty->new manifest file->右边 put into out root
     （2）edit configuration -> new tomcat server ->vm option (-Dfile.encoding=UTF-8) ->deployment 选择第一步新建的artifacts
     （3）启动tomcat
-
+3.遇到启动tomcat的问题 *
+    （1）当maven加入jar包时，操作
+        file->project..->artifacts->new web application->empty->new manifest file->右边 put into out root，
+        防止出现问题，然后在*.war包内查看所引用的jar包版本，是否有问题
+    （2）解决maven jar冲突，在pom下分析jar包，如果有冲突，在manager里面进行指定或排掉。

@@ -64,6 +64,13 @@
             <!--注入拦截器-->
             <bean id="loginInterceptor" class="com.zzh.food.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
+
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean id="traceInterceptor" class="com.zzh.food.interceptor.TraceInterceptor"/>
+        </mvc:interceptor>
     </mvc:interceptors>
+
+    <import resource="spring-quartz.xml"/>
 
 </beans>
