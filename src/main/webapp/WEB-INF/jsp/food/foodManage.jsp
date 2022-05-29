@@ -461,6 +461,7 @@
                     console.log(upload);
                     //上传的图片回显
                     $("#photoShow").attr("src", res.data.src);
+
                     //改变背景颜色
                     $("#imageBox").css("background", "#ffffff");
                     //给隐藏域赋值，只需要后半截，前边的是通用的路径，不需要保存到数据库中

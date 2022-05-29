@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>宿递-用户登录</title>
+        <title>校园美食-用户登录</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta http-equiv="Access-Control-Allow-Origin" content="*">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -10,7 +10,7 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="format-detection" content="telephone=no">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/static/plugins/layui/lib/layui-v2.5.5/css/layui.css" media="all">
-        <link rel="icon" href="${pageContext.request.contextPath}/static/plugins/layui/images/sudifavicon.ico" type="image/x-icon"/>
+        <link rel="icon" href="${pageContext.request.contextPath}/static/plugins/layui/images/login_icon.png" type="image/x-icon"/>
         <!--[if lt IE 9]>
         <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
         <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
@@ -35,7 +35,7 @@
             .login-main .login-bottom {width:428px;background:#fff;border-radius:0 0 12px 12px;padding-bottom:53px;}
             .login-main .login-bottom .center {width:288px;margin:0 auto;padding-top:40px;padding-bottom:15px;position:relative;}
             .login-main .login-bottom .tip {clear:both;height:16px;line-height:16px;width:288px;margin:0 auto;}
-            body {background:url(${pageContext.request.contextPath}/static/plugins/layui/images/sudi_loginbg.jpg) 0% 0% / cover no-repeat;position:static;font-size:12px;}
+            body {background:url(${pageContext.request.contextPath}/static/plugins/layui/images/login_bg.png) 0% 0% / cover no-repeat;position:static;font-size:12px;}
             input::-webkit-input-placeholder {color:#a6aebf;}
             input::-moz-placeholder {/* Mozilla Firefox 19+ */            color:#a6aebf;}
             input:-moz-placeholder {/* Mozilla Firefox 4 to 18 */            color:#a6aebf;}
@@ -61,7 +61,7 @@
         <div class="main-body">
             <div class="login-main">
                 <div class="login-top">
-                    <span>宿递用户登录</span>
+                    <span>用户登录</span>
                     <span class="bg1"></span>
                     <span class="bg2"></span>
                 </div>
@@ -87,9 +87,6 @@
                     </div>
                 </form>
             </div>
-        </div>
-        <div class="footer" style="font-size: 12px">
-            ©版权所有 2017-2021 LiangJie工作室<span class="padding-5">|</span><a target="_blank" href="http://www.miitbeian.gov.cn">粤ICP备16006642号-2</a>
         </div>
     </body>
 

@@ -45,21 +45,6 @@ public interface SystemConstant {
     /**
      * 文件上传的路径
      */
-    String UPLOADPATH = "D:/sudi_data/upload/";
-
-    /**
-     * 配送员的文件上传路径
-     */
-    String DELIVERPATH = "deliver/";
-
-    /**
-     * 菜品类别的文件上传路径
-     */
-    String FOODTYPEPATH = "foodtype/";
-
-    /**
-     * 菜品SPU的文件上传路径
-     */
-    String FOODPATH = "food/";
+    String UPLOADPATH = "D:/schoolFood/images";
 
 }

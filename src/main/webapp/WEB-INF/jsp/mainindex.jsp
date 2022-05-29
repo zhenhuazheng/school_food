@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>宿递大学生食堂外卖平台后台面板</title>
+        <title>校园美食平台后台面板</title>
         <meta name="keywords" content="layuimini,layui,layui模板,layui后台,后台模板,admin,admin模板,layui mini">
         <meta name="description" content="layuimini基于layui的轻量级前端后台管理框架，最简洁、易用的后台框架模板，面向所有层次的前后端程序,只需提供一个接口就直接初始化整个框架，无需复杂操作。">
         <meta name="renderer" content="webkit">
@@ -12,7 +12,7 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="format-detection" content="telephone=no">
-        <link rel="icon" href="${pageContext.request.contextPath}/static/plugins/layui/images/sudifavicon.ico">
+        <link rel="icon" href="${pageContext.request.contextPath}/static/plugins/layui/images/login_icon.png">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/static/plugins/layui/lib/layui-v2.5.5/css/layui.css" media="all">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/static/plugins/layui/css/layuimini.css?v=2.0.4.2" media="all">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/static/plugins/layui/css/themes/default.css" media="all">
