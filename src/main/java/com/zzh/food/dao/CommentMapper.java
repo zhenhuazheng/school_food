@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * 评论DAO层
- * @author LiangJie
+ * @author zhengzhenhua
  */
 @Repository
 public interface CommentMapper {

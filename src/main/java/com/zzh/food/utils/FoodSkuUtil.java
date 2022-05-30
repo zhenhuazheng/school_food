@@ -3,7 +3,7 @@ package com.zzh.food.utils;
 import java.util.List;
 
 /**
- * @author LiangJie
+ * @author zhengzhenhua
  */
 public class FoodSkuUtil {
 

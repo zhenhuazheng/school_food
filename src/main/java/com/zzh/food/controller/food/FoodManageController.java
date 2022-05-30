@@ -19,7 +19,7 @@ import java.util.Map;
 
 /**
  * 菜品SPU管理控制器
- * @author LiangJie
+ * @author zhengzhenhua
  */
 @RestController
 @RequestMapping("/backstage/food")

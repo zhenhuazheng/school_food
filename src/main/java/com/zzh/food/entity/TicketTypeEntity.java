@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  * 优惠券类型实体类
- * @author LiangJie
+ * @author zhengzhenhua
  */
 public class TicketTypeEntity implements Serializable {
 

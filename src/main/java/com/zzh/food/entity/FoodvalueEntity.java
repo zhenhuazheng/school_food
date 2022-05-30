@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * 菜品规格实体类
- * @author LiangJie
+ * @author zhengzhenhua
  */
 public class FoodvalueEntity extends FoodattrEntity implements Serializable {
 

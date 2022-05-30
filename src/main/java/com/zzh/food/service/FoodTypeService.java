@@ -9,7 +9,7 @@ import java.util.Map;
 
 /**
  * 菜品类别服务层
- * @author LiangJie
+ * @author zhengzhenhua
  */
 public interface FoodTypeService {
 

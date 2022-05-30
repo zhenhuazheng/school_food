@@ -13,7 +13,7 @@ import java.util.Map;
 
 /**
  * 优惠券领取管理控制器
- * @author LiangJie
+ * @author zhengzhenhua
  */
 @RestController
 @RequestMapping("/backstage/ticket")

@@ -5,7 +5,7 @@ import java.util.Date;
 
 /**
  * 投诉实体类
- * @author LiangJie
+ * @author zhengzhenhua
  */
 public class ComplaintEntity extends OrderDetailEntity implements Serializable {
 

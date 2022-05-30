@@ -7,7 +7,7 @@ import java.util.Map;
 
 /**
  * 评论服务层
- * @author LiangJie
+ * @author zhengzhenhua
  */
 public interface CommentService {
 

@@ -11,7 +11,7 @@ import java.util.Map;
 
 /**
  * 优惠券商城控制器
- * @author LiangJie
+ * @author zhengzhenhua
  */
 @RestController
 @RequestMapping("/reception/ticket")

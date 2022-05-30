@@ -5,7 +5,7 @@ import java.util.Date;
 
 /**
  * 配送员实体类
- * @author LiangJie
+ * @author zhengzhenhua
  */
 public class DeliverEntity extends UserEntity implements Serializable {
     private String deliverId;

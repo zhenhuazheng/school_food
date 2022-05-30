@@ -25,7 +25,7 @@ import java.util.*;
 
 /**
  * 菜品SPU管理服务层实现类
- * @author LiangJie
+ * @author zhengzhenhua
  */
 @Service
 @Transactional

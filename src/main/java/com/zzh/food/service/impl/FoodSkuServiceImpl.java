@@ -20,7 +20,7 @@ import java.util.Map;
 
 /**
  * 菜品SKU服务岑实现类
- * @author LiangJie
+ * @author zhengzhenhua
  */
 @Service
 @Transactional

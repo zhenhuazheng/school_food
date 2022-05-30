@@ -5,7 +5,7 @@ import java.util.Map;
 
 /**
  * 购物车业务层
- * @author LiangJie
+ * @author zhengzhenhua
  */
 public interface ShopcartService {
 

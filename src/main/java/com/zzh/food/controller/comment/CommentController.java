@@ -12,7 +12,7 @@ import java.util.Map;
 
 /**
  * 评论控制器
- * @author LiangJie
+ * @author zhengzhenhua
  */
 @RestController
 @RequestMapping("/reception/comment")

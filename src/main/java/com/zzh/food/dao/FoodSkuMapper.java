@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * 菜品SKU持久层
- * @author LiangJie
+ * @author zhengzhenhua
  */
 public interface FoodSkuMapper {
 

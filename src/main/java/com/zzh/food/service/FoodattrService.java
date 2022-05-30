@@ -7,7 +7,7 @@ import java.util.Map;
 
 /**
  * 菜品规格组服务层
- * @author LiangJie
+ * @author zhengzhenhua
  */
 public interface FoodattrService {
 

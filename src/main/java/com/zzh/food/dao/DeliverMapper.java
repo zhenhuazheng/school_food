@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * 配送员Mapper接口
- * @author LiangJie
+ * @author zhengzhenhua
  */
 @Repository
 public interface DeliverMapper {

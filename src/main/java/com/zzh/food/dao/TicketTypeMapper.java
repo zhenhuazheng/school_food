@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * 优惠券类别DAO层
- * @author LiangJie
+ * @author zhengzhenhua
  */
 @Repository
 public interface TicketTypeMapper {

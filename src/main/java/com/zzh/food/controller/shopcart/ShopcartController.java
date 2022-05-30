@@ -11,7 +11,7 @@ import java.util.Map;
 
 /**
  * 购物车控制器
- * @author LiangJie
+ * @author zhengzhenhua
  */
 @RestController
 @RequestMapping("/reception/shopcart")

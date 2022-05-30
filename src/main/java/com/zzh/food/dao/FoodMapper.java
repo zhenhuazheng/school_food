@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * 菜品SPU管理持久层
- * @author LiangJie
+ * @author zhengzhenhua
  */
 @Repository
 public interface FoodMapper {

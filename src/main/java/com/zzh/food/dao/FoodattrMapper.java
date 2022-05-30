@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * 菜品规格组持久层
- * @author LiangJie
+ * @author zhengzhenhua
  */
 @Repository
 public interface FoodattrMapper {

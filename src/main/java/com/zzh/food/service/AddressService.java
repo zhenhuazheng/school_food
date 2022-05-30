@@ -8,7 +8,7 @@ import java.util.Map;
 
 /**
  * 用户地址管理业务层
- * @author LiangJie
+ * @author zhengzhenhua
  */
 public interface AddressService {
 

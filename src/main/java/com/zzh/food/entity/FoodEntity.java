@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  * 菜品SPU实体类
- * @author LiangJie
+ * @author zhengzhenhua
  */
 public class FoodEntity extends FoodTypeEntity implements Serializable {
 

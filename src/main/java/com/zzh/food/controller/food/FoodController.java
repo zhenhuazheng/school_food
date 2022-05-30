@@ -13,7 +13,7 @@ import java.util.Map;
 
 /**
  * 前台点餐中心控制器
- * @author LiangJie
+ * @author zhengzhenhua
  */
 @RestController
 @RequestMapping("/reception/food")

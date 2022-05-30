@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 订单细则DAO层
- * @author LiangJie
+ * @author zhengzhenhua
  */
 @Repository
 public interface OrderDetailMapper {

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * 菜单实体类
- * @author LiangJie
+ * @author zhengzhenhua
  */
 public class MenuEntity implements Serializable {
     private Integer id;

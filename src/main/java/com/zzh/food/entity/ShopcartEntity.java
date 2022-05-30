@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * 购物车实体类
- * @author LiangJie
+ * @author zhengzhenhua
  */
 public class ShopcartEntity extends FoodSkuEntity implements Serializable {
     private Long shopcartId;

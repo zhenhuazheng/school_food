@@ -13,7 +13,7 @@ import java.util.Map;
 
 /**
  * 菜品SPU管理服务层
- * @author LiangJie
+ * @author zhengzhenhua
  */
 public interface FoodService {
 

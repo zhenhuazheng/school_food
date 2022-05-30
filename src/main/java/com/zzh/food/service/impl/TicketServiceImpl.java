@@ -23,7 +23,7 @@ import java.util.Map;
 
 /**
  * 优惠券商城服务层实现类
- * @author LiangJie
+ * @author zhengzhenhua
  */
 @Service
 @Transactional

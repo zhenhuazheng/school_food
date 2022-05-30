@@ -5,7 +5,7 @@ import java.util.Date;
 
 /**
  * 优惠券实体类
- * @author LiangJie
+ * @author zhengzhenhua
  */
 public class TicketEntity extends TicketTypeEntity implements Serializable {
     private Long ticketId;

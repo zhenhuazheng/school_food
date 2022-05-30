@@ -10,7 +10,7 @@ import java.util.Map;
 
 /**
  * 配送员服务层
- * @author LiangJie
+ * @author zhengzhenhua
  */
 public interface DeliverService {
 

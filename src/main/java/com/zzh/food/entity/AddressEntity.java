@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * 用户信息实体类
- * @author LiangJie
+ * @author zhengzhenhua
  */
 public class AddressEntity extends UserEntity implements Serializable {
 

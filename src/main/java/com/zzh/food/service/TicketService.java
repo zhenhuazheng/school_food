@@ -8,7 +8,7 @@ import java.util.Map;
 
 /**
  * 优惠券商城服务层
- * @author LiangJie
+ * @author zhengzhenhua
  */
 public interface TicketService {
 

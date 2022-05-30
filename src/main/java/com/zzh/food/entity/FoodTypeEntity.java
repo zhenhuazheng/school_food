@@ -5,7 +5,7 @@ import java.util.Date;
 
 /**
  * 菜品类别实体类
- * @author LiangJie
+ * @author zhengzhenhua
  */
 public class FoodTypeEntity implements Serializable {
     private Long typeId;

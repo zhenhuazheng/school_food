@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 菜品规格持久层
- * @author LiangJie
+ * @author zhengzhenhua
  */
 public interface FoodvalueMapper {
 

@@ -5,7 +5,7 @@ import java.util.Date;
 
 /**
  * 角色实体类
- * @author LiangJie
+ * @author zhengzhenhua
  */
 public class RoleEntity implements Serializable {
     private Long roleId;

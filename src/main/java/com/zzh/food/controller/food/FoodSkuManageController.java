@@ -12,7 +12,7 @@ import java.util.Map;
 
 /**
  * 菜品SKU管理控制器
- * @author LiangJie
+ * @author zhengzhenhua
  */
 @RestController
 @RequestMapping("/backstage/foodSku")

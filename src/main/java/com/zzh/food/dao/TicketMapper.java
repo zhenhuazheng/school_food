@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * 优惠券DAO层
- * @author LiangJie
+ * @author zhengzhenhua
  */
 public interface TicketMapper {
 

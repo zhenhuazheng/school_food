@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * 购物车DAO层
- * @author LiangJie
+ * @author zhengzhenhua
  */
 @Repository
 public interface ShopcartMapper {

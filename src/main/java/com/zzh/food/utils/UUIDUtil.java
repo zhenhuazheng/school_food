@@ -4,7 +4,7 @@ import java.util.UUID;
 
 /**
  * 唯一随机编码生成工具类
- * @author LiangJie
+ * @author zhengzhenhua
  */
 public class UUIDUtil {
 

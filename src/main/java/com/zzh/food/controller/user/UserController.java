@@ -35,7 +35,7 @@ public class UserController {
     }
 
     /**
-     * 退出登录6
+     * 退出登录
      * @param session
      * @return
      */

@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * 菜品类别dao层
- * @author LiangJie
+ * @author zhengzhenhua
  */
 @Repository
 public interface FoodTypeMapper {

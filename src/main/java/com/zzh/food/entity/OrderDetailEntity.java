@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 
 /**
  * 订单细则实体类
- * @author LiangJie
+ * @author zhengzhenhua
  */
 public class OrderDetailEntity extends FoodSkuEntity implements Serializable {
 

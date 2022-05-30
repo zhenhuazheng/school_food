@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  * 订单实体类
- * @author LiangJie
+ * @author zhengzhenhua
  */
 public class OrderEntity implements Serializable {
     private String orderId;
