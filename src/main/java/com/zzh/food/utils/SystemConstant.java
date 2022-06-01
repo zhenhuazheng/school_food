@@ -12,6 +12,8 @@ public interface SystemConstant {
      */
     String LOGINFLAG = "loginFlag";
 
+    String AUTH_FLAG = "authFlag";
+
     /**
      * 返回的消息变量名
      */

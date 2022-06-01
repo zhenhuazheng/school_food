@@ -29,6 +29,15 @@ public class SystemController {
     }
 
     /**
+     * 跳转到实名认证
+     * @return
+     */
+    @RequestMapping("/auth.html")
+    public String auth(){
+        return "user/auth";
+    }
+
+    /**
      * 跳转到注册界面
      * @return
      */

@@ -2,6 +2,7 @@ package com.zzh.food.controller.user;
 
 import com.alibaba.fastjson.JSON;
 import com.zzh.food.utils.SystemConstant;
+import com.zzh.food.vo.UserExtVo;
 import com.zzh.food.vo.UserVo;
 import com.zzh.food.entity.UserEntity;
 import com.zzh.food.service.UserService;
@@ -81,6 +82,20 @@ public class UserController {
         Long userId = ((UserEntity) session.getAttribute(SystemConstant.USERLOGIN)).getUserId();
         Map<String, Object> userByUserId = userService.findUserByUserId(userId);
         return JSON.toJSONString(userByUserId);
+    }
+
+    /**
+     * 实名认证
+     * @param session
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/auth")
+    public String auth(UserExtVo vo, HttpSession session){
+        Long userId = ((UserEntity) session.getAttribute(SystemConstant.USERLOGIN)).getUserId();
+        vo.setUserId(userId);
+        Map<String, Object> auth = userService.auth(vo, session);
+        return JSON.toJSONString(auth);
     }
 
     /**

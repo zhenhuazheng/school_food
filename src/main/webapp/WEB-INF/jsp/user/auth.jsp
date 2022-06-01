@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>校园美食-用户登录</title>
+        <title>校园美食-实名认证</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta http-equiv="Access-Control-Allow-Origin" content="*">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -50,7 +50,8 @@
             .footer {left:0;bottom:0;color:#fff;width:100%;position:absolute;text-align:center;line-height:30px;padding-bottom:10px;text-shadow:#000 0.1em 0.1em 0.1em;font-size:14px;}
             .padding-5 {padding:5px !important;}
             .footer a,.footer span {color:#fff;}
-            .register {font-stretch:normal;letter-spacing:0;color:#1391ff;text-decoration:none;}
+            .toLogin {font-stretch:normal;letter-spacing:0;color:#1391ff;text-decoration:none;}
+            .tip>a:hover{color: #777777}
             @media screen and (max-width:428px) {.login-main {width:360px !important;}
                 .login-main .login-top {width:360px !important;}
                 .login-main .login-bottom {width:360px !important;}
@@ -61,7 +62,7 @@
         <div class="main-body">
             <div class="login-main">
                 <div class="login-top">
-                    <span>用户登录</span>
+                    <span>实名认证</span>
                     <span class="bg1"></span>
                     <span class="bg2"></span>
                 </div>
@@ -69,21 +70,15 @@
                     <div class="center">
                         <div class="item">
                             <span class="icon icon-2"></span>
-                            <input type="text" name="username" lay-verify="required"  placeholder="请输入登录账号" maxlength="24"/>
+                            <input type="text" name="name" lay-verify="required|name"  placeholder="请设置真实姓名" maxlength="5" id="name"/>
                         </div>
-
                         <div class="item">
-                            <span class="icon icon-3"></span>
-                            <input type="password" name="password" lay-verify="required"  placeholder="请输入密码" maxlength="20">
-                            <span class="bind-password icon icon-4"></span>
+                            <span class="icon icon-1"></span>
+                            <input type="text" name="idCard" lay-verify="required|idCard" placeholder="请输入身份证号" maxlength="18"/>
                         </div>
-                    </div>
-                    <div class="tip">
-                        <a href="javascript:" class="register">没有账号？立即快速注册</a>
-                        <a href="javascript:" class="forget-password">忘记密码？</a>
                     </div>
                     <div class="layui-form-item" style="text-align:center; width:100%;height:100%;margin:0px;">
-                        <button class="login-btn" lay-submit="" lay-filter="login">立即登录</button>
+                        <button class="login-btn" lay-submit="" lay-filter="auth">立即认证</button>
                     </div>
                 </form>
             </div>
@@ -102,50 +97,19 @@
              */
             if (top.location != self.location) top.location = self.location;
 
-            $('.bind-password').on('click', function () {
-                if ($(this).hasClass('icon-5')) {
-                    $(this).removeClass('icon-5');
-                    $("input[name='password']").attr('type', 'password');
-                } else {
-                    $(this).addClass('icon-5');
-                    $("input[name='password']").attr('type', 'text');
-                }
-            });
-
-            $('.icon-nocheck').on('click', function () {
-                if ($(this).hasClass('icon-check')) {
-                    $(this).removeClass('icon-check');
-                } else {
-                    $(this).addClass('icon-check');
-                }
-            });
-
             /**
-             * 进行登录操作
+             * 进行注册操作
              */
-            form.on('submit(login)', function (data) {
-                $.post("${pageContext.request.contextPath}/user/login", data.field, function(result){
+            form.on('submit(auth)', function (data) {
+                $.post("${pageContext.request.contextPath}/user/auth", data.field, function(result){
                     console.log(data);//打印表单数据到控制台
-                    if (result.loginFlag){
-                        if (!result.authFlag) {
-                            location.href = "${pageContext.request.contextPath}/auth.html";
-                        } else {
-                            location.href = "${pageContext.request.contextPath}/index.html";
-                        }
+                    if (result.authFlag){
+                        location.href = "${pageContext.request.contextPath}/index.html";
                     }else{
                         layer.msg(result.message);
                     }
                 }, "json");
                 return false;
             });
-
-            /**
-             * 绑定跳转注册页面的点击事件
-             */
-            $(".register").click(function () {
-                location.href = "${pageContext.request.contextPath}/register.html";
-            })
         });
     </script>
-</html>
-

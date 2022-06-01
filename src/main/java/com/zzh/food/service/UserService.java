@@ -1,6 +1,7 @@
 package com.zzh.food.service;
 
 import com.zzh.food.utils.LayuiTableDataResult;
+import com.zzh.food.vo.UserExtVo;
 import com.zzh.food.vo.UserVo;
 
 import javax.servlet.http.HttpSession;
@@ -84,6 +85,14 @@ public interface UserService {
      * @return
      */
     public Map<String, Object> register(UserVo vo, HttpSession session);
+
+    /**
+     * 用户注册
+     * @param vo
+     * @param session
+     * @return
+     */
+    public Map<String, Object> auth(UserExtVo vo, HttpSession session);
 
     /**
      * 查询某个用户的个人资料

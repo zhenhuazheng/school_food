@@ -29,7 +29,9 @@ public class UserEntity implements Serializable {
     private Date lastLoginTime;
     private Date lastLogoutTime;
     private Integer loginCount;
+    //Y-可用；N-不可用
     private String status;
+    //Y-认证；N-未认证
     private String authFlag;
 
 }

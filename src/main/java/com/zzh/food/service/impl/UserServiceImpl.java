@@ -3,10 +3,13 @@ package com.zzh.food.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.zzh.food.dao.DeliverMapper;
+import com.zzh.food.dao.UserExtMapper;
 import com.zzh.food.dao.UserMapper;
+import com.zzh.food.enums.AuthFlagEnum;
 import com.zzh.food.utils.CreateCodeUtil;
 import com.zzh.food.utils.LayuiTableDataResult;
 import com.zzh.food.utils.SystemConstant;
+import com.zzh.food.vo.UserExtVo;
 import com.zzh.food.vo.UserVo;
 import com.zzh.food.dao.RoleMapper;
 import com.zzh.food.entity.RoleEntity;
@@ -32,6 +35,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private DeliverMapper deliverMapper;
 
+    @Autowired
+    private UserExtMapper userExtMapper;
+
     /**
      * 用户登录方法，根据用户名和密码校验用户的信息是否正确
      * @return
@@ -47,6 +53,10 @@ public class UserServiceImpl implements UserService {
                 //将user信息保存到session中
                 session.setAttribute(SystemConstant.USERLOGIN, userLogin);
                 map.put(SystemConstant.LOGINFLAG, true);
+                map.put(SystemConstant.AUTH_FLAG, false);
+                if (AuthFlagEnum.YES.getCode().equals(userLogin.getAuthFlag())) {
+                    map.put(SystemConstant.AUTH_FLAG, true);
+                }
             }else {
                 //密码错误
                 map.put(SystemConstant.LOGINFLAG, false);
@@ -273,6 +283,17 @@ public class UserServiceImpl implements UserService {
             }
         }
         map.put(SystemConstant.LOGINFLAG, false);
+        return map;
+    }
+
+    @Override
+    public Map<String, Object> auth(UserExtVo vo, HttpSession session) {
+        Map<String, Object> map = new HashMap<>(16);
+        //加入用户基础数据
+        if (userExtMapper.addUserExt(vo) > 0){
+            map.put(SystemConstant.AUTH_FLAG, true);
+        }
+        map.put(SystemConstant.AUTH_FLAG, false);
         return map;
     }
 
