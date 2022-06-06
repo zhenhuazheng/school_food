@@ -46,6 +46,7 @@
             .login-main .login-bottom .tip .login-tip {font-family:MicrosoftYaHei;font-size:12px;font-weight:400;font-stretch:normal;letter-spacing:0;color:#9abcda;cursor:pointer;}
             .login-main .login-bottom .tip .forget-password {font-stretch:normal;letter-spacing:0;color:#1391ff;text-decoration:none;position:absolute;right:62px;}
             .login-main .login-bottom .login-btn {width:288px;height:40px;background-color:#1E9FFF;border-radius:16px;margin:24px auto 0;text-align:center;line-height:40px;color:#fff;font-size:14px;letter-spacing:0;cursor:pointer;border:none;}
+            .verCode {width:50px;height:20px;text-align:center;margin-left:235px;line-height:20px;color:#1E9FFF;font-size:12px;letter-spacing:0;cursor:pointer;border:none;}
             .login-main .login-bottom .center .item .validateImg {position:absolute;right:1px;cursor:pointer;height:36px;border:1px solid #e6e6e6;}
             .footer {left:0;bottom:0;color:#fff;width:100%;position:absolute;text-align:center;line-height:30px;padding-bottom:10px;text-shadow:#000 0.1em 0.1em 0.1em;font-size:14px;}
             .padding-5 {padding:5px !important;}
@@ -73,6 +74,10 @@
                             <input type="text" name="username" lay-verify="required|username"  placeholder="请设置用户名" maxlength="24" id="username"/>
                         </div>
                         <div class="item">
+                            <span class="icon icon-2"></span>
+                            <input type="text" name="school" lay-verify="required|school"  placeholder="请设置学校" maxlength="24" id="school"/>
+                        </div>
+                        <div class="item">
                             <span class="icon icon-3"></span>
                             <input type="password" name="password" lay-verify="required|password"  placeholder="请设置6-12位的密码" maxlength="20" id="password">
                             <span class="bind-password icon icon-4" id="bind-password"></span>
@@ -84,8 +89,14 @@
                         </div>
                         <div class="item">
                             <span class="icon icon-1"></span>
-                            <input type="text" name="phone" lay-verify="required|phone" placeholder="请输入手机号" maxlength="24"/>
+                            <input type="text" name="phone" lay-verify="required|phone" placeholder="请输入手机号" maxlength="24" id="phone"/>
                         </div>
+                        <div class="item">
+                            <span class="icon icon-1"></span>
+                            <input type="text" name="verCode" lay-verify="required|verCode" placeholder="请输入验证码" maxlength="24"/>
+                        </div>
+                        <!--<button class="verCode-btn" id="vercode">发送</button>  -->
+                        <span class="verCode" id="vercode">发送短信</span>
                     </div>
                     <div class="tip">
                         <a href="javascript:" class="toLogin">已有账号？立即登录</a>
@@ -101,10 +112,12 @@
 
     <script src="${pageContext.request.contextPath}/static/plugins/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
     <script>
-        layui.use(['form','jquery','layer'], function () {
+        layui.use(['form','jquery','layer', 'util'], function () {
             var $ = layui.jquery,
                 form = layui.form,
-                layer = layui.layer;
+                layer = layui.layer,
+                util = layui.util;
+            var flag = false;
 
             /**
              * 登录过期的时候，跳出ifram框架
@@ -128,6 +141,7 @@
              * 绑定再次输入密码的显示小眼睛
              */
             $('#bind-repassword').on('click', function () {
+                layer.msg('请输入手机号');
                 if ($(this).hasClass('icon-5')) {
                     $(this).removeClass('icon-5');
                     $("#repassword").attr('type', 'password');
@@ -160,11 +174,41 @@
                 return false;
             });
 
+            $('#vercode').on('click', function () {
+                var phone = $("#phone").val();
+                if (phone === "") {
+                    layer.msg('请输入手机号');
+                } else {
+                    if (!flag) {
+                        $.post("${pageContext.request.contextPath}/user/verCode",  {phone: phone}, function(result){
+                            if (result.success){
+                                var serverTime = new Date().getTime();
+                                var endTime = serverTime+60000; //假设为结束日期
+                                flag = true;
+                                util.countdown(endTime, serverTime, function(date, serverTime, timer){
+                                    $("#vercode").text(date[3]);
+                                    if (serverTime==endTime){
+                                        flag = false;
+                                        $("#vercode").text("发送短信");
+                                    }
+                                });
+                            }else{
+                                layer.msg(result.message);
+                            }
+                        }, "json");
+                    }
+                }
+            });
+
             /**
              * 绑定跳转登录页面的点击事件
              */
             $(".toLogin").click(function () {
                 location.href = "${pageContext.request.contextPath}/login.html";
+            });
+
+            $(".forget-password").click(function () {
+                location.href = "${pageContext.request.contextPath}/modifyPassword.html";
             });
 
             /**

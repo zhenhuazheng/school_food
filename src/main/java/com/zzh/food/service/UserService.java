@@ -117,4 +117,11 @@ public interface UserService {
      * @return
      */
     public Map<String, Object> modifyPassword(String oldPassword, String newPassword, HttpSession session);
+
+    /**
+     * 发送验证码
+     * @param phone
+     * @return
+     */
+    public Map<String, Object> verCode(String phone);
 }

@@ -12,6 +12,8 @@ public interface SystemConstant {
      */
     String LOGINFLAG = "loginFlag";
 
+    String SUCCESS = "success";
+
     String AUTH_FLAG = "authFlag";
 
     /**

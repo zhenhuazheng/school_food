@@ -2,16 +2,17 @@ package com.zzh.food.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.zzh.food.dao.DeliverMapper;
-import com.zzh.food.dao.UserExtMapper;
-import com.zzh.food.dao.UserMapper;
+import com.zzh.food.dao.*;
+import com.zzh.food.entity.MobileVerEntity;
 import com.zzh.food.enums.AuthFlagEnum;
+import com.zzh.food.enums.StatusEnum;
 import com.zzh.food.utils.CreateCodeUtil;
 import com.zzh.food.utils.LayuiTableDataResult;
 import com.zzh.food.utils.SystemConstant;
+import com.zzh.food.utils.TimeUtil;
+import com.zzh.food.vo.MobileVerVo;
 import com.zzh.food.vo.UserExtVo;
 import com.zzh.food.vo.UserVo;
-import com.zzh.food.dao.RoleMapper;
 import com.zzh.food.entity.RoleEntity;
 import com.zzh.food.entity.UserEntity;
 import com.zzh.food.service.UserService;
@@ -19,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,6 +39,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserExtMapper userExtMapper;
+
+    @Autowired
+    private FoodMobileVerMapper mobileVerMapper;
 
     /**
      * 用户登录方法，根据用户名和密码校验用户的信息是否正确
@@ -269,6 +274,14 @@ public class UserServiceImpl implements UserService {
             map.put(SystemConstant.MESSAGE, "该用户名已存在!");
             return map;
         }
+        MobileVerEntity verEntity = mobileVerMapper.findMobileVerByPhone(vo.getPhone());
+        if (verEntity == null || !vo.getVerCode().equals(verEntity.getVerCode())) {
+            map.put(SystemConstant.LOGINFLAG, false);
+            map.put(SystemConstant.MESSAGE, "验证码不正确!");
+            return map;
+        }
+        vo.setAuthFlag(AuthFlagEnum.NO.getCode());
+        vo.setStatus(StatusEnum.YES.getCode());
         //加入用户基础数据
         if (userMapper.register(vo) > 0){
             //将用户添加基础角色
@@ -355,6 +368,22 @@ public class UserServiceImpl implements UserService {
         }else {
             map.put(SystemConstant.FLAG, false);
             map.put(SystemConstant.MESSAGE, "密码修改失败，原始密码输入有误");
+        }
+        return map;
+    }
+
+    @Override
+    public Map<String, Object> verCode(String phone) {
+        Map<String, Object> map = new HashMap<>(16);
+        MobileVerVo mobileVerVo = new MobileVerVo();
+        mobileVerVo.setEndTime(TimeUtil.toDate(TimeUtil.addMinute(LocalDateTime.now(), 30)));
+        mobileVerVo.setVerCode(String.valueOf((int)((Math.random()*9+1)*100000)));
+        mobileVerVo.setPhone(phone);
+        if (mobileVerMapper.addMobileVer(mobileVerVo) > 0){
+            map.put(SystemConstant.SUCCESS, true);
+        } else {
+            map.put(SystemConstant.SUCCESS, false);
+            map.put(SystemConstant.MESSAGE, "发送短信失败");
         }
         return map;
     }

@@ -3,8 +3,8 @@
 <mapper namespace="com.zzh.food.dao.FoodMobileVerMapper">
 
     <!-- 根据用户名查询用户信息 -->
-    <select id="findMobileVerByUserId" resultType="com.zzh.food.entity.MobileVerEntity">
-        select * from food_mobile_ver where userId=#{userId}
+    <select id="findMobileVerByPhone" resultType="com.zzh.food.entity.MobileVerEntity">
+        select * from food_mobile_ver where phone=#{phone} order by createTime desc limit 1;
     </select>
 
 
@@ -14,8 +14,8 @@
         <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
             select last_insert_id()
         </selectKey>
-        insert into food_mobile_ver (id, verCode, userId, endTime, createTime, status)
-        values(#{id}, #{verCode}, #{userId}, #{endTime}, NOW(), #{status});
+        insert into food_mobile_ver (verCode, phone, endTime, createTime, status)
+        values(#{verCode}, #{phone}, #{endTime}, NOW(), 'N');
     </insert>
 
     <!-- 后台修改用户信息 -->

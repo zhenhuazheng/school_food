@@ -13,11 +13,11 @@ import java.util.List;
 public interface FoodMobileVerMapper {
 
     /**
-     * 根据用户名查询用户信息
+     *
      * @param
      * @return
      */
-    public MobileVerEntity findMobileVerByUserId(String userId);
+    public MobileVerEntity findMobileVerByPhone(String phone);
 
     /**
      * 后台添加用户，返回添加的用户Id

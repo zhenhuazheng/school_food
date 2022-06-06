@@ -123,4 +123,16 @@ public class UserController {
         Map<String, Object> map = userService.modifyPassword(oldPassword, newPassword, session);
         return JSON.toJSONString(map);
     }
+
+    /**
+     * 发送验证码
+     * @param phone
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/verCode")
+    public String verCode(String phone){
+        Map<String, Object> map = userService.verCode(phone);
+        return JSON.toJSONString(map);
+    }
 }
