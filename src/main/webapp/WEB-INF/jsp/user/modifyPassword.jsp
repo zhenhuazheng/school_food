@@ -64,7 +64,7 @@
     <div class="main-body">
         <div class="login-main">
             <div class="login-top">
-                <span>实名认证</span>
+                <span>密码修改</span>
                 <span class="bg1"></span>
                 <span class="bg2"></span>
             </div>
@@ -72,13 +72,24 @@
                 <div class="center">
 
                     <div class="item">
-                        <span class="icon icon-1"></span>
-                        <input type="text" name="idCard" lay-verify="required|idCard" placeholder="请输入新密码" maxlength="18"/>
-                        <input type="text" name="newPassword" lay-verify="required|password" autocomplete="off" class="layui-input" id="newPassword">
+                        <span class="icon icon-3"></span>
+                        <input type="password" name="newPassword" lay-verify="required|password" placeholder="请输入新密码"  autocomplete="off" class="layui-input" id="newPassword">
+                        <span class="bind-password icon icon-4" id="bind-password"></span>
                     </div>
+                    <div class="item">
+                        <span class="icon icon-1"></span>
+                        <input type="text" name="phone" lay-verify="required|phone" placeholder="请输入手机号" maxlength="24" id="phone"/>
+                    </div>
+                    <div class="item">
+                        <span class="icon icon-1"></span>
+                        <input type="text" name="verCode" lay-verify="required|verCode" placeholder="请输入验证码" maxlength="24"/>
+                    </div>
+                    <!--<button class="verCode-btn" id="vercode">发送</button>  -->
+                    <span class="verCode" id="vercode">发送短信</span>
                 </div>
+
                 <div class="layui-form-item" style="text-align:center; width:100%;height:100%;margin:0px;">
-                    <button class="login-btn" lay-submit="" lay-filter="auth">立即认证</button>
+                    <button class="login-btn" lay-submit="" lay-filter="modify">立即修改</button>
                 </div>
             </form>
         </div>
@@ -87,10 +98,67 @@
 
     <script src="${pageContext.request.contextPath}/static/plugins/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
     <script>
-        layui.use(['form','jquery','layer'], function () {
+        layui.use(['form','jquery','layer', 'util'], function () {
             var $ = layui.jquery,
                 form = layui.form,
-                layer = layui.layer;
+                layer = layui.layer,
+                util = layui.util;
+            var flag = false;
+
+            /**
+             * 绑定输入密码的显示小眼睛
+             */
+            $('#bind-password').on('click', function () {
+                if ($(this).hasClass('icon-5')) {
+                    $(this).removeClass('icon-5');
+                    $("input[name='newPassword']").attr('type', 'password');
+                } else {
+                    $(this).addClass('icon-5');
+                    $("input[name='newPassword']").attr('type', 'text');
+                }
+            });
+
+            /**
+             * 进行注册操作
+             */
+            form.on('submit(modify)', function (data) {
+                $.post("${pageContext.request.contextPath}/user/modifyPassword", data.field, function(result){
+                    console.log(data);//打印表单数据到控制台
+                    if (result.success){
+                        location.href = "${pageContext.request.contextPath}/login.html";
+                        layer.msg(result.message);
+                    }else{
+                        layer.msg(result.message);
+                    }
+                }, "json");
+                return false;
+            });
+
+            $('#vercode').on('click', function () {
+                var phone = $("#phone").val();
+                if (phone === "") {
+                    layer.msg('请输入手机号');
+                } else {
+                    if (!flag) {
+                        $.post("${pageContext.request.contextPath}/user/verCode",  {phone: phone}, function(result){
+                            if (result.success){
+                                var serverTime = new Date().getTime();
+                                var endTime = serverTime+60000; //假设为结束日期
+                                flag = true;
+                                util.countdown(endTime, serverTime, function(date, serverTime, timer){
+                                    $("#vercode").text(date[3]);
+                                    if (serverTime==endTime){
+                                        flag = false;
+                                        $("#vercode").text("发送短信");
+                                    }
+                                });
+                            }else{
+                                layer.msg(result.message);
+                            }
+                        }, "json");
+                    }
+                }
+            });
 
             /**
              * 自定义表单校验规则

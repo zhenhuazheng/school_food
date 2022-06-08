@@ -139,6 +139,10 @@
                 return false;
             });
 
+            $(".forget-password").click(function () {
+                location.href = "${pageContext.request.contextPath}/modifyPassword.html";
+            });
+
             /**
              * 绑定跳转注册页面的点击事件
              */

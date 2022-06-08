@@ -7,6 +7,11 @@
         select * from food_user where username=#{username}
     </select>
 
+    <!-- 根据用户名查询用户信息 -->
+    <select id="findUserByPhone" resultType="com.zzh.food.entity.UserEntity">
+        select * from food_user where phone=#{phone}
+    </select>
+
     <!-- 设置用户登录成功后的信息记录 -->
     <update id="setLoginSuccessInfo">
         update food_user set lastLoginTime=NOW(), loginCount=loginCount+1 where userId=#{userId}

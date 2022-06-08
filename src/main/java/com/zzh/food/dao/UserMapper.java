@@ -18,6 +18,13 @@ public interface UserMapper {
     public UserEntity findUserByUsername(String username);
 
     /**
+     * 根据手机号查询用户信息
+     * @param phone
+     * @return
+     */
+    public UserEntity findUserByPhone(String phone);
+
+    /**
      * 设置用户登录成功后的信息记录，如登入时间，登录次数+1等
      * @param userId
      * @return

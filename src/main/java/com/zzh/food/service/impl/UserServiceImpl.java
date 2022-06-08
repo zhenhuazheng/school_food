@@ -12,6 +12,7 @@ import com.zzh.food.utils.LayuiTableDataResult;
 import com.zzh.food.utils.SystemConstant;
 import com.zzh.food.utils.TimeUtil;
 import com.zzh.food.vo.MobileVerVo;
+import com.zzh.food.vo.ModifyPasswordVo;
 import com.zzh.food.vo.UserExtVo;
 import com.zzh.food.vo.UserVo;
 import com.zzh.food.entity.RoleEntity;
@@ -355,27 +356,37 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 用户修改密码
-     * @param oldPassword
-     * @param newPassword
+     * @param vo
      * @param session
      * @return
      */
     @Override
-    public Map<String, Object> modifyPassword(String oldPassword, String newPassword, HttpSession session) {
+    public Map<String, Object> modifyPassword(ModifyPasswordVo vo, HttpSession session) {
         Map<String, Object> map = new HashMap<>(16);
-        String sessionPassword = ((UserEntity) session.getAttribute(SystemConstant.USERLOGIN)).getPassword();
-        Long userId = ((UserEntity) session.getAttribute(SystemConstant.USERLOGIN)).getUserId();
-        if (sessionPassword.equals(oldPassword)){
-            if (userMapper.modifyPassword(newPassword, userId) > 0) {
-                map.put(SystemConstant.FLAG, true);
-                map.put(SystemConstant.MESSAGE, "密码修改成功");
+        try {
+            UserEntity user = userMapper.findUserByPhone(vo.getPhone());
+            if (user != null){
+                MobileVerEntity verEntity = mobileVerMapper.findMobileVerByPhone(vo.getPhone());
+                if (verEntity == null || !vo.getVerCode().equals(verEntity.getVerCode())) {
+                    map.put(SystemConstant.LOGINFLAG, false);
+                    map.put(SystemConstant.MESSAGE, "验证码不正确!");
+                    return map;
+                }
+                if (userMapper.modifyPassword(vo.getNewPassword(), user.getUserId()) > 0) {
+                    map.put(SystemConstant.SUCCESS, true);
+                    map.put(SystemConstant.MESSAGE, "密码修改成功");
+                }else {
+                    map.put(SystemConstant.SUCCESS, false);
+                    map.put(SystemConstant.MESSAGE, "密码修改失败");
+                }
             }else {
-                map.put(SystemConstant.FLAG, false);
-                map.put(SystemConstant.MESSAGE, "密码修改失败");
+                map.put(SystemConstant.SUCCESS, false);
+                map.put(SystemConstant.MESSAGE, "用户不存在");
             }
-        }else {
-            map.put(SystemConstant.FLAG, false);
-            map.put(SystemConstant.MESSAGE, "密码修改失败，原始密码输入有误");
+        } catch (Exception e) {
+            e.printStackTrace();
+            map.put(SystemConstant.SUCCESS, false);
+            map.put(SystemConstant.MESSAGE, "系统异常");
         }
         return map;
     }

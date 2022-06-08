@@ -1,6 +1,7 @@
 package com.zzh.food.service;
 
 import com.zzh.food.utils.LayuiTableDataResult;
+import com.zzh.food.vo.ModifyPasswordVo;
 import com.zzh.food.vo.UserExtVo;
 import com.zzh.food.vo.UserVo;
 
@@ -111,12 +112,11 @@ public interface UserService {
 
     /**
      * 用户修改密码
-     * @param oldPassword
-     * @param newPassword
+     * @param vo
      * @param session
      * @return
      */
-    public Map<String, Object> modifyPassword(String oldPassword, String newPassword, HttpSession session);
+    public Map<String, Object> modifyPassword(ModifyPasswordVo vo, HttpSession session);
 
     /**
      * 发送验证码

@@ -2,6 +2,7 @@ package com.zzh.food.controller.user;
 
 import com.alibaba.fastjson.JSON;
 import com.zzh.food.utils.SystemConstant;
+import com.zzh.food.vo.ModifyPasswordVo;
 import com.zzh.food.vo.UserExtVo;
 import com.zzh.food.vo.UserVo;
 import com.zzh.food.entity.UserEntity;
@@ -112,15 +113,14 @@ public class UserController {
 
     /**
      * 用户修改密码
-     * @param oldPassword
-     * @param newPassword
+     * @param vo
      * @param session
      * @return
      */
     @ResponseBody
     @RequestMapping("/modifyPassword")
-    public String modifyPassword(String oldPassword, String newPassword, HttpSession session){
-        Map<String, Object> map = userService.modifyPassword(oldPassword, newPassword, session);
+    public String modifyPassword(ModifyPasswordVo vo, HttpSession session){
+        Map<String, Object> map = userService.modifyPassword(vo, session);
         return JSON.toJSONString(map);
     }
 

@@ -62,6 +62,7 @@
             <mvc:exclude-mapping path="/user/checkUsername"/>
             <mvc:exclude-mapping path="/user/verCode"/>
             <mvc:exclude-mapping path="/modifyPassword.html"/>
+            <mvc:exclude-mapping path="/user/modifyPassword"/>
             <mvc:exclude-mapping path="/static/**"/>
             <!--注入拦截器-->
             <bean id="loginInterceptor" class="com.zzh.food.interceptor.LoginInterceptor"/>
