@@ -57,10 +57,6 @@
             </div>
         </nav>
         <div id="view"></div>
-
-        <div style="clear:both;width: 100%;">
-            <div class="qing banq" style="margin: 0 auto 20px;width: 457px;">闽ICP备201721086021号 Copyright 宿递By <font color="#1aa094"><b>LiangJ</b></font>，All Rights Reserved</div>
-        </div>
     </body>
 
     <script type="text/html" id="demo">

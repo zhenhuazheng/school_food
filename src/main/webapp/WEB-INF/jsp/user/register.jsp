@@ -166,7 +166,11 @@
                 $.post("${pageContext.request.contextPath}/user/register", data.field, function(result){
                     console.log(data);//打印表单数据到控制台
                     if (result.loginFlag){
-                        location.href = "${pageContext.request.contextPath}/index.html";
+                        if (!result.authFlag) {
+                            location.href = "${pageContext.request.contextPath}/auth.html";
+                        } else {
+                            location.href = "${pageContext.request.contextPath}/index.html";
+                        }
                     }else{
                         layer.msg(result.message);
                     }

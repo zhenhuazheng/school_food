@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.zzh.food.dao.*;
 import com.zzh.food.entity.MobileVerEntity;
 import com.zzh.food.enums.AuthFlagEnum;
+import com.zzh.food.enums.AuthStatusEnum;
 import com.zzh.food.enums.StatusEnum;
 import com.zzh.food.utils.CreateCodeUtil;
 import com.zzh.food.utils.LayuiTableDataResult;
@@ -288,6 +289,7 @@ public class UserServiceImpl implements UserService {
             Long userId = vo.getUserId();
             if (userMapper.addUserAndRole(userId, SystemConstant.DEFAULTROLEID) > 0) {
                 map.put(SystemConstant.LOGINFLAG, true);
+                map.put(SystemConstant.AUTH_FLAG, false);
                 //将user信息保存到session中
                 session.setAttribute(SystemConstant.USERLOGIN, vo);
                 //登录通过，保存登录成功的信息
@@ -302,11 +304,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public Map<String, Object> auth(UserExtVo vo, HttpSession session) {
         Map<String, Object> map = new HashMap<>(16);
+        vo.setStatus(AuthStatusEnum.PASS.getCode());
         //加入用户基础数据
         if (userExtMapper.addUserExt(vo) > 0){
+            UserVo userVo = new UserVo();
+            userVo.setUserId(vo.getUserId());
+            userVo.setAuthFlag(AuthFlagEnum.YES.getCode());
+            userMapper.modifyUserBackstage(userVo);
             map.put(SystemConstant.AUTH_FLAG, true);
+        } else {
+            map.put(SystemConstant.AUTH_FLAG, false);
         }
-        map.put(SystemConstant.AUTH_FLAG, false);
         return map;
     }
 

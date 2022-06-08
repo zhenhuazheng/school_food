@@ -121,9 +121,6 @@
         </nav>
 
         <div id="orderList"></div>
-        <div style="width: 100%;">
-            <div class="qing banq" style="margin: 0 auto 20px;width: 457px;">闽ICP备201721086021号 Copyright 宿递By <font color="#1aa094"><b>LiangJ</b></font>，All Rights Reserved</div>
-        </div>
 
         <%-- 评价订单弹出层 --%>
         <div class="layui-container" style="display: none;padding: 30px;width: 100%" id="commentForm">

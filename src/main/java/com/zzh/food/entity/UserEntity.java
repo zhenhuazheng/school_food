@@ -33,5 +33,6 @@ public class UserEntity implements Serializable {
     private String status;
     //Y-认证；N-未认证
     private String authFlag;
+    private String school;
 
 }

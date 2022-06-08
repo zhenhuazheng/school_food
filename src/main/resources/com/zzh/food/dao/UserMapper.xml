@@ -48,6 +48,7 @@
             <if test="birthday!=null"> birthday=#{birthday}, </if>
             <if test="email!=null"> email=#{email}, </if>
             <if test="gender!=null"> gender=#{gender}, </if>
+            <if test="authFlag!=null and authFlag!=''"> authFlag=#{authFlag}, </if>
         </set>
         where userId=#{userId}
     </update>
@@ -94,8 +95,8 @@
         <selectKey keyProperty="userId" order="AFTER" resultType="java.lang.Long">
             select last_insert_id()
         </selectKey>
-        insert into food_user (username, password, phone, registerDate)
-        values(#{username}, #{password}, #{phone}, NOW())
+        insert into food_user (username, password, phone, registerDate, authFlag, school, status)
+        values(#{username}, #{password}, #{phone}, NOW(), #{authFlag}, #{school}, #{status})
     </insert>
 
     <!-- 查询某个用户的个人资料 -->

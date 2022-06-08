@@ -60,7 +60,7 @@
                 </div>
             </div>
         </form>
-        <div class="qing banq" style="margin-bottom:20px;">闽ICP备201721086021号 Copyright 宿递By <font color="#1aa094"><b>LiangJ</b></font>，All Rights Reserved</div>
+
     </body>
 
 
