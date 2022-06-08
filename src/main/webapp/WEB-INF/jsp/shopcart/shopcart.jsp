@@ -102,7 +102,7 @@
                     {{# layui.each(d.list, function(index, item){ }}
                         {{# var shopcartId = "shopcartId_" + item.shopcartId; }}
                             <div class="gwlb" id={{ shopcartId }}>
-                            {{# var background = "background:url(${pageContext.request.contextPath}/upload/"+ item.foodImage + ") center center no-repeat;"; }}
+                            {{# var background = "background:url(" + item.foodImage + ") center center no-repeat;"; }}
                                 <a href="javascript:void(0)" class="gw-tu" style={{ background }}></a>
                                 <div class="gw-jk"><a href="javascript:void(0)" style="font-size: 14px;color: #333333;">{{ item.skuName }}</a></div>
                                 <div class="gw-jg">{{ item.skuPrice }}元</div>

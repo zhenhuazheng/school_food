@@ -334,7 +334,7 @@
                             //添加的提交请求
                             url = "${pageContext.request.contextPath}/backstage/foodtype/modify";
                             //设置图片回显
-                            $("#photoShow").attr("src", "/sudi/upload/" + data.typeImage);
+                            $("#photoShow").attr("src", data.typeImage);
                         }
                     });
                 }else if (obj.event === "offShelf") {

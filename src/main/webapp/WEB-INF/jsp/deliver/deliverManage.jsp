@@ -398,7 +398,7 @@
                             //添加的提交请求
                             url = "${pageContext.request.contextPath}/backstage/deliver/modify";
                             //设置图片回显
-                            $("#photoShow").attr("src", "/sudi/upload/" + data.imageUrl);
+                            $("#photoShow").attr("src", data.imageUrl);
                         }
                     });
                     $(window).on("resize", function () {

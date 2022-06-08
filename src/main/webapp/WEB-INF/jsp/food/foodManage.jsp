@@ -683,7 +683,7 @@
                             $("#standardGroup").css("display", "none");
                             $(".foodattrId").removeAttr("lay-verify");
                             //设置图片回显
-                            $("#photoShow").attr("src", "/sudi/upload/" + data.foodImage);
+                            $("#photoShow").attr("src", data.foodImage);
                         }
                     });
                 }else if (obj.event === "offShelf") {

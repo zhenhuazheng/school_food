@@ -64,7 +64,7 @@
     <script type="text/html" id="demo">
         {{# layui.each(d.list, function(index, orderDetail){ }}
         <div class="layui-form-item">
-            {{# var foodImage = "${pageContext.request.contextPath}/upload/" + orderDetail.foodImage; }}
+            {{# var foodImage = orderDetail.foodImage; }}
             <div class="layui-inline layui-col-md2" style="margin-left: 68px;"><img src={{ foodImage }} style="width: 50px;height: 50px"></div>
             <div class="layui-inline layui-col-md3"><p style="line-height: 45px;">{{ orderDetail.skuName }}</p></div>
             <div class="layui-inline layui-col-md2"><p style="line-height: 45px;">{{ (orderDetail.skuPrice).toFixed(2) }}元 × {{ orderDetail.amount }}份</p></div>

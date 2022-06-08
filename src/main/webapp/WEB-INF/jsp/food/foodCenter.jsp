@@ -164,7 +164,7 @@
                             var foodInfoPath = "${pageContext.request.contextPath}/reception/foodInfo.html?foodId=" + food.foodId; }}
                             <dd style="background-color:#1aa0940a;">
                                 <a href={{ foodInfoPath }} class="yptu">
-                                    {{# var src = '/sudi/upload/' + food.foodImage; }}
+                                    {{# var src = food.foodImage; }}
                                     <img src={{ src }} width="230" height="230">
                                 </a>
                                 <div class="ypmc">

@@ -106,7 +106,7 @@
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tbody>
                 {{# layui.each(d.list, function(index, item){ }}
-                    {{# var foodImage = "${pageContext.request.contextPath}/upload/" + item.foodImage; }}
+                    {{# var foodImage = item.foodImage; }}
                     <tr>
                         <td width="75"><img src={{ foodImage }} width="59" height="45"></td>
                         <td width=""><a href="javascript:void(0)" class="dj-m1" style="font-size: 14px;color: #333333;margin-left: 16px;">{{ item.skuName }}</a></td>

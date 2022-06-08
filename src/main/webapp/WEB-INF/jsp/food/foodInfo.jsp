@@ -88,7 +88,7 @@
                 <!--演示内容开始-->
                 <div id="tsShopContainer" style="height: 346px;position: relative;">
                     <div id="tsImgS" style="height: 100%;position: absolute;top: 14%;">
-                        {{# var foodImage = "${pageContext.request.contextPath}/upload/" + d.list.foodSpu.foodImage; }}
+                        {{# var foodImage = d.list.foodSpu.foodImage; }}
                         <a href="javascript:void(0)" title="Images" class="MagicZoom" id="MagicZoom">
                             <img style="width:100%;height:100%;" src={{ foodImage }} />
                         </a>

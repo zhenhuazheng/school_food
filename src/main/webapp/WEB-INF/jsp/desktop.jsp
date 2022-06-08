@@ -56,7 +56,7 @@
                         {{# var foodInfoPath = "${pageContext.request.contextPath}/reception/foodInfo.html?foodId=" + recommend.foodId;}}
                             <div class="agile_ecommerce_tab_left mobiles_grid">
                                 <div class="hs-wrapper hs-wrapper3">
-                                {{# var foodImage = "${pageContext.request.contextPath}/upload/" + recommend.foodImage; }}
+                                {{# var foodImage = recommend.foodImage; }}
                                     <img src={{ foodImage }} alt=" " class="img-responsive" style="height: 255px;"/>
                                     <img src={{ foodImage }} alt=" " class="img-responsive" style="height: 255px;"/>
                                     <img src={{ foodImage }} alt=" " class="img-responsive" style="height: 255px;"/>
@@ -84,7 +84,7 @@
                             <div class="agile_ecommerce_tab_left mobiles_grid">
                             {{# var foodInfoPath = "${pageContext.request.contextPath}/reception/foodInfo.html?foodId=" + hotSale.foodId;}}
                                 <div class="hs-wrapper hs-wrapper3" style="height: 200px;">
-                                    {{# var foodImage = "${pageContext.request.contextPath}/upload/" + hotSale.foodImage; }}
+                                    {{# var foodImage = hotSale.foodImage; }}
                                     <img src={{ foodImage }} alt=" " class="img-responsive" style="height: 255px;"/>
                                     <img src={{ foodImage }} alt=" " class="img-responsive" style="height: 255px;"/>
                                     <img src={{ foodImage }} alt=" " class="img-responsive" style="height: 255px;"/>

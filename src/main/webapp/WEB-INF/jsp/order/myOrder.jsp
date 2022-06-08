@@ -228,7 +228,7 @@
             <hr style="margin-top: 0px;">
             {{# layui.each(orderInfo.orderDetailList, function(index, orderDetail){ }}
                 <div class="layui-form-item" style="margin: 0 auto;">
-                    {{# var foodImage = "${pageContext.request.contextPath}/upload/" + orderDetail.foodImage; }}
+                    {{# var foodImage = orderDetail.foodImage; }}
                     <input type="hidden" value="{{ orderDetail.orderDetailId }}"/>
                     <div class="layui-inline layui-col-md2" style="margin-left: 80px;"><img src={{ foodImage }} style="width: 50px;height: 50px"></div>
                     <div class="layui-inline layui-col-md3"><p style="line-height: 45px;">{{ orderDetail.skuName }}</p></div>
