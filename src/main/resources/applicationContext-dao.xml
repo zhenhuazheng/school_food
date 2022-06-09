@@ -28,7 +28,7 @@
     <!--3. 配置SqlSessionFactory工厂-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="typeAliasesPackage" value="edu.jmu.sudi.entity"/>
+        <property name="typeAliasesPackage" value="com.zzh.food.entity"/>
         <property name="mapperLocations" value="classpath:com/zzh/food/dao/*.xml"/>
         <property name="configLocation" value="classpath:SqlMapConfig.xml"></property>
         <property name="plugins">

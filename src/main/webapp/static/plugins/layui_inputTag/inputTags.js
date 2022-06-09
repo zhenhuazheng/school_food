@@ -126,4 +126,4 @@ layui.define(['jquery','layer'],function(exports){
     return thisinputTags.call(inst);
   };
   exports('inputTags',inputTags);
-}).link('/sudi/static/plugins/layui_inputTag/inputTags.css')
+}).link('/schoolFood/static/plugins/layui_inputTag/inputTags.css')
