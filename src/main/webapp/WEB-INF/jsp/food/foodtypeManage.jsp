@@ -112,7 +112,7 @@
                                 <div class="layui-upload-list layui-inline" id="imageBox" style="width: 817px;">
                                     <input type="hidden" name="typeImage" id="typeImage" value="foodtype/defaultImage/defaultImage.png" lay-verify="required">
                                     <a href="javascript:void(0);" style="width: 100%">
-                                        <img class="upload-img" id="photoShow" src="/sudi/upload/foodtype/defaultImage/defaultImage.png">
+                                        <img class="upload-img" id="photoShow" src="${pageContext.request.contextPath}/static/resources/images/defaultImage.png">
                                     </a>
                                 </div>
                             </div>
@@ -280,13 +280,16 @@
                             //清空表单数据
                             $("#dataForm")[0].reset();
                             //重置默认图片
-                            $("#photoShow").attr("src", "/sudi/upload/foodtype/defaultImage/defaultImage.png");
+                            $("#photoShow").attr("src", "${pageContext.request.contextPath}/static/resources/images/defaultImage.png");
                             //重置默认图片
-                            $("#photoShow").attr("src", "/sudi/upload/foodtype/defaultImage/defaultImage.png");
+                            $("#photoShow").attr("src", "${pageContext.request.contextPath}/static/resources/images/defaultImage.png");
                             //重置隐藏域
                             $("#typeImage").val("foodtype/defaultImage/defaultImage.png");
                             //添加的提交请求路径赋值
                             url = "${pageContext.request.contextPath}/backstage/foodtype/add";
+
+                            src=
+
                         }
                     });
                     $(window).on("resize", function () {
@@ -300,7 +303,7 @@
              */
             $("#doReset").click(function () {
                 //重置图片回显为默认的图片
-                $("#photoShow").attr("src", "/sudi/upload/foodtype/defaultImage/defaultImage.png");
+                $("#photoShow").attr("src", "${pageContext.request.contextPath}/static/resources/images/defaultImage.png");
                 //重置隐藏域为默认值
                 $("#imageUrl").val("foodtype/defaultImage/defaultImage.png");
                 //普通输入框文本域置空

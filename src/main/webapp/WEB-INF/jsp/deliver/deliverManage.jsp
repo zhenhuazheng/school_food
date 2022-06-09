@@ -128,7 +128,7 @@
                                 <div class="layui-upload-list layui-col-md3 layui-col-xs5" id="imageBox">
                                     <input type="hidden" name="imageUrl" id="imageUrl" value="deliver/defaultImage/defaultImage.png" lay-verify="required">
                                     <a href="javascript:void(0);">
-                                        <img class="upload-img" id="photoShow" src="/sudi/upload/deliver/defaultImage/defaultImage.png">
+                                        <img class="upload-img" id="photoShow" src="${pageContext.request.contextPath}/static/resources/images/defaultImage.png">
                                     </a>
                                 </div>
                             </div>
@@ -303,7 +303,7 @@
              */
             $("#doReset").click(function () {
                 //重置图片回显为默认的图片
-                $("#photoShow").attr("src", "/sudi/upload/deliver/defaultImage/defaultImage.png");
+                $("#photoShow").attr("src", "${pageContext.request.contextPath}/static/resources/images/defaultImage.png");
                 //重置隐藏域为默认值
                 $("#imageUrl").val("deliver/defaultImage/defaultImage.png");
                 //普通输入框文本域置空
@@ -337,7 +337,7 @@
                             //添加的提交请求路径赋值
                             url = "${pageContext.request.contextPath}/backstage/deliver/add";
                             //重置默认图片
-                            $("#photoShow").attr("src", "/sudi/upload/deliver/defaultImage/defaultImage.png");
+                            $("#photoShow").attr("src", "${pageContext.request.contextPath}/static/resources/images/defaultImage.png");
                             //重置隐藏域
                             $("#imageUrl").val("deliver/defaultImage/defaultImage.png");
                         }

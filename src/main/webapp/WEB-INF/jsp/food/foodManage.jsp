@@ -200,7 +200,7 @@
                                 <div class="my-imageBox layui-inline" id="imageBox">
                                     <input type="hidden" name="foodImage" id="foodImage" value="food/defaultImage/defaultImage.png" lay-verify="required">
                                     <a href="javascript:void(0);" style="width: 100%">
-                                        <img class="upload-img" id="photoShow" src="/sudi/upload/food/defaultImage/defaultImage.png">
+                                        <img class="upload-img" id="photoShow" src="${pageContext.request.contextPath}/static/resources/images/defaultImage.png">
                                     </a>
                                 </div>
                             </div>
@@ -433,9 +433,9 @@
                             //清空表单数据
                             $("#dataForm")[0].reset();
                             //重置默认图片
-                            $("#photoShow").attr("src", "/sudi/upload/food/defaultImage/defaultImage.png");
+                            $("#photoShow").attr("src", "${pageContext.request.contextPath}/static/resources/images/defaultImage.png");
                             //重置默认图片
-                            $("#photoShow").attr("src", "/sudi/upload/food/defaultImage/defaultImage.png");
+                            $("#photoShow").attr("src", "${pageContext.request.contextPath}/static/resources/images/defaultImage.png");
                             //重置隐藏域
                             $("#foodImage").val("food/defaultImage/defaultImage.png");
                             //添加的提交请求路径赋值
