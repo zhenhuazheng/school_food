@@ -30,9 +30,9 @@
         <%-- 轮播图区域 --%>
         <div class="layui-carousel" id="test1">
             <div carousel-item>
-                <div><a><img src="${pageContext.request.contextPath}/static/resources/images/banner1.png"></a></div>
-                <div><a><img src="${pageContext.request.contextPath}/static/resources/images/banner2.png"></a></div>
-                <div><a><img src="${pageContext.request.contextPath}/static/resources/images/banner3.png"></a></div>
+                <div><a><img src="${pageContext.request.contextPath}/static/resources/images/banner1.jpeg"></a></div>
+                <div><a><img src="${pageContext.request.contextPath}/static/resources/images/banner2.jpeg"></a></div>
+                <div><a><img src="${pageContext.request.contextPath}/static/resources/images/banner3.jpeg"></a></div>
             </div>
         </div>
 
