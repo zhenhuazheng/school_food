@@ -74,7 +74,7 @@ public class DeliverServiceImpl implements DeliverService {
             String newFileName = FileUploadUtil.rename(deliverImage);
             //全部文件都放在一个文件夹下不好管理，所以以日期作为文件夹进行管理
             //组装路径
-            String finalPath = new SimpleDateFormat("yyyyMMdd").format(new Date()) + "/" + newFileName;
+            String finalPath = "/" + new SimpleDateFormat("yyyyMMdd").format(new Date()) + "/" + newFileName;
             //获得文件对象，参数1：文件上传的路径，参数2：文件名称（包括文件夹）
             File path = new File(SystemConstant.UPLOADPATH, finalPath);
             if (!path.getParentFile().exists()) {
@@ -91,7 +91,7 @@ public class DeliverServiceImpl implements DeliverService {
                 map.put("msg", "文件上传成功");
                 Map<String, Object> dataMap = new HashMap<>(16);
                 //图片路径
-                dataMap.put("src", SystemConstant.UPLOADPATH + finalPath);
+                dataMap.put("src", finalPath);
                 //鼠标悬停时显示的文本
                 dataMap.put("title", newFileName);
                 //保存图片路径，不包括前面的文件夹，从模块文件夹起始

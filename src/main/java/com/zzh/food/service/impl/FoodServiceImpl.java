@@ -221,9 +221,9 @@ public class FoodServiceImpl implements FoodService {
     public Map<String, Object> delete(Long foodId) {
         Map<String, Object> map = new HashMap<>(16);
         //先要删除菜品的规格值
-        if (foodvalueMapper.deleteFoodvalueByFoodId(foodId)>0
-                && foodSkuMapper.deleteFoodSkuByFoodId(foodId)>0
-                && foodMapper.deleteFood(foodId)>0) {
+        foodvalueMapper.deleteFoodvalueByFoodId(foodId);
+        foodSkuMapper.deleteFoodSkuByFoodId(foodId);
+        if (foodMapper.deleteFood(foodId) > 0) {
             map.put(SystemConstant.FLAG, true);
             map.put(SystemConstant.MESSAGE, "菜品SPU信息以及所有SKU信息删除成功");
         }else {

@@ -235,7 +235,8 @@ public class UserServiceImpl implements UserService {
     public Map<String, Object> deleteUser(Long userId) {
         Map<String, Object> map = new HashMap<>(16);
         //先删除该用户的角色关系
-        if (userMapper.deleteUserAndRoleByUserId(userId)>=1 && userMapper.deleteUser(userId)>=1){
+        userMapper.deleteUserAndRoleByUserId(userId);
+        if (userMapper.deleteUser(userId)>=1){
             map.put(SystemConstant.FLAG, true);
             map.put(SystemConstant.MESSAGE, "用户信息删除成功");
         }else {

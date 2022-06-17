@@ -287,9 +287,6 @@
                             $("#typeImage").val("foodtype/defaultImage/defaultImage.png");
                             //添加的提交请求路径赋值
                             url = "${pageContext.request.contextPath}/backstage/foodtype/add";
-
-                            src=
-
                         }
                     });
                     $(window).on("resize", function () {
