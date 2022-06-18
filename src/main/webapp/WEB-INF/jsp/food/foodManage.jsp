@@ -438,6 +438,7 @@
                             $("#photoShow").attr("src", "${pageContext.request.contextPath}/static/resources/images/defaultImage.png");
                             //重置隐藏域
                             $("#foodImage").val("food/defaultImage/defaultImage.png");
+                            $("#standardGroup").css("display", "");
                             //添加的提交请求路径赋值
                             url = "${pageContext.request.contextPath}/backstage/food/add";
                         }

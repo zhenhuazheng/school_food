@@ -24,6 +24,7 @@ import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -69,7 +70,7 @@ public class TicketServiceImpl implements TicketService {
         TicketTypeEntity ticketType = ticketTypeMapper.findTicketTypeById(ticketTypeId);
         UserEntity user = (UserEntity) session.getAttribute(SystemConstant.USERLOGIN);
         //判断用户的积分够不够领取
-        if (user.getScore() < ticketType.getNeedScore()){
+        if (user.getScore() < Optional.ofNullable(ticketType.getNeedScore()).orElse(0)){
             map.put(SystemConstant.FLAG, false);
             map.put(SystemConstant.MESSAGE, "很抱歉，您的积分不足以兑换该优惠券");
             return map;
