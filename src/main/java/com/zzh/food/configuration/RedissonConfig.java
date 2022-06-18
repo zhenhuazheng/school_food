@@ -16,9 +16,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RedissonConfig {
 
-    @Autowired
-    RedissonClient redissonClient;
-
     @Bean
     RedissonClient redisson(){
         Config config = new Config();
@@ -32,18 +29,6 @@ public class RedissonConfig {
             e.printStackTrace();
         }
         return redissonClient;
-    }
-
-    public void seckill() {
-        RLock redissonLock = redissonClient.getLock("test");
-        redissonLock.lock();
-        try {
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            redissonLock.unlock();
-        }
     }
 
 }

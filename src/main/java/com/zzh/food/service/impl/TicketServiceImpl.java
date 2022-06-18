@@ -6,12 +6,16 @@ import com.zzh.food.dao.TicketMapper;
 import com.zzh.food.dao.TicketTypeMapper;
 import com.zzh.food.dao.UserMapper;
 import com.zzh.food.utils.LayuiTableDataResult;
+import com.zzh.food.utils.RedisUtils;
 import com.zzh.food.utils.SystemConstant;
 import com.zzh.food.vo.TicketVo;
 import com.zzh.food.entity.TicketEntity;
 import com.zzh.food.entity.TicketTypeEntity;
 import com.zzh.food.entity.UserEntity;
 import com.zzh.food.service.TicketService;
+import org.redisson.api.RLock;
+import org.redisson.api.RedissonClient;
+import org.redisson.client.RedisClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +24,7 @@ import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 优惠券商城服务层实现类
@@ -35,6 +40,8 @@ public class TicketServiceImpl implements TicketService {
     private TicketMapper ticketMapper;
     @Autowired
     private UserMapper userMapper;
+    //@Autowired
+    //private RedissonClient redis;
 
     /**
      * 查询所有上架的优惠券类别
@@ -56,6 +63,7 @@ public class TicketServiceImpl implements TicketService {
      */
     @Override
     public Map<String, Object> receiveTicket(Long ticketTypeId, HttpSession session) {
+        //acquire("ticket_" + ticketTypeId);
         Map<String, Object> map = new HashMap<>(16);
         //根据编号查询优惠券类别
         TicketTypeEntity ticketType = ticketTypeMapper.findTicketTypeById(ticketTypeId);
@@ -215,4 +223,25 @@ public class TicketServiceImpl implements TicketService {
         map.put("ticket", ticket);
         return map;
     }
+
+    private final String LOCK_TITLE = "redisLock_";
+
+    /**
+    public void acquire(String lockName) {
+        //声明key对象
+        String key = LOCK_TITLE + lockName;
+        //获取锁对象
+        RLock mylock = redis.getLock(key);
+        //加锁，并且设置锁过期时间，防止死锁的产生
+        mylock.lock(2, TimeUnit.MINUTES);
+    }
+    //锁的释放
+    public void release(String lockName) {
+        //必须是和加锁时的同一个key
+        String key = LOCK_TITLE + lockName;
+        //获取所对象
+        RLock mylock = redis.getLock(key);
+        //释放锁（解锁）
+        mylock.unlock();
+    }*/
 }
